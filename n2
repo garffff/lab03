@@ -1,0 +1,60 @@
+#include <algorithm>
+#include <iostream>
+#include <random>
+#include <vector>
+
+using namespace std;
+
+vector<int> generate_random_vector(int a, int niz, int verh)
+{
+    vector<int> A(a);
+    for(int i =0; i<a; ++i)
+    {
+        A[i] = rand() % (verh - niz + 1) + niz;
+    }
+    return A;
+}
+
+int main()
+{
+    cout << "Insert vectors length and limiting values (length, min value, max value)" << endl;
+    int l, minim, maxim;
+    cin >> l >> minim >> maxim;
+    vector<int> vec = generate_random_vector(l, minim, maxim);
+    cout << "original vector" << endl;
+    for(int i =0; i<l; ++i)
+    {
+        cout << vec[i] << " ";
+    }
+    cout << endl;
+    int sum = 0, sumsq = 0, sumf6 = 0, sumk1k2 = 0, sums1s2 = 0;
+    for (int i = 0; i < l; ++i)
+    {
+        sum += vec[i];
+        sumsq += vec[i]*vec[i];
+        if(i == 5) sumf6 = sum;
+    }
+    if(l < 5) sumf6 = sum;
+    cout << "sum of all the elements of the vector = " << sum << endl;
+    cout << "sum of the squares of all the elements of the vector = " << sumsq << endl;
+    cout << "sum of the first six elements of the vector = " << sumf6 << endl;
+    cout << "Insert k1, k2" << endl;
+    int k1, k2;
+    cin >> k1 >> k2;
+    for(k1 - 1; k1 < k2; ++k1)
+    {
+        sumk1k2 += vec[k1 - 1];
+    }
+    cout << "the sum of the vector elements from k1 to k2 = " << sumk1k2 << endl;
+    cout << "arithmetic mean of all the elements of the vector = " << (float)sum / l << endl;
+    cout << "Insert s1, s2" << endl;
+    int s1, s2;
+    cin >> s1 >> s2;
+    int r = s2 - s1;
+    for(s1 - 1; s1 < s2; ++s1)
+    {
+        sums1s2 += vec[s1-1];
+    }
+    cout << "arithmetic mean of the vector elements from s1 to s2 = " << (float) sums1s2 / r << endl;
+    return 0;
+}
