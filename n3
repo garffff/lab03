@@ -1,0 +1,39 @@
+#include <algorithm>
+#include <iostream>
+#include <random>
+#include <vector>
+
+using namespace std;
+
+vector<int> generate_random_vector(int a, int niz, int verh)
+{
+    vector<int> A(a);
+    for(int i =0; i<a; ++i)
+    {
+        A[i] = rand() % (verh - niz + 1) + niz;
+    }
+    return A;
+}
+
+int main()
+{
+    vector<int> vec = generate_random_vector(20, -50, 100);
+    cout << "original vector" << endl;
+    for(int i =0; i<20; ++i)
+    {
+        cout << vec[i] << " ";
+    }
+    cout << endl;
+    for(int i = 0; i < 3; i++)
+    {
+        int a = vec[i];
+        vec[i] = vec[17 + i];
+        vec[17 + i] = a;
+    }
+    cout << "rearranged vector" << endl;
+    for(int i =0; i<20; ++i)
+    {
+        cout << vec[i] << " ";
+    }
+    return 0;
+}
