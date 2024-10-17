@@ -1,0 +1,65 @@
+#include <algorithm>
+#include <iostream>
+#include <random>
+#include <vector>
+
+using namespace std;
+
+vector<int> generate_random_vector(int a, int niz, int verh)
+{
+    vector<int> A(a);
+    for(int i =0; i<a; ++i)
+    {
+        A[i] = rand() % (verh - niz + 1) + niz;
+    }
+    return A;
+}
+
+int main()
+{
+    cout << "Insert vectors length and limiting values (length, min value, max value)" << endl;
+    int n, minim, maxim, c = 0;
+    cin >> n >> minim >> maxim;
+    vector<int> vec = generate_random_vector(n, minim, maxim);
+    cout << "original vector" << endl;
+    for(int i =0; i<n; ++i)
+    {
+        cout << vec[i] << " ";
+    }
+    cout << endl;
+    for(int i = 0; i < n; ++i)
+    {
+        if(vec[i] < 0)
+        {
+            for(i; i < n; ++i)
+            {
+                vec[i] = vec[i + 1];
+            }
+            vec.pop_back();
+            c +=1;
+            break;
+        }
+        if(i == n - 1 and vec[i] >= 0) cout << "no negative numbers in vector" << endl;
+    }
+    for(int i = 0; i < n; ++i)
+    {
+        if(vec[n - i] % 2 == 0)
+        {
+            for(int j = n - i; j < n - 1; ++j)
+            {
+                vec[j] = vec[j+1];
+            }
+            vec.pop_back();
+            c+=1;
+            break;
+        }
+        if(i == n - 1 and vec[i] % 2 != 0) cout << "no even numbers in vector" << endl;
+    }
+    cout << "final vector" << endl;
+    for(int i =0; i<n - c; ++i)
+    {
+        cout << vec[i] << " ";
+    }
+    cout << endl;
+    return 0;
+}
