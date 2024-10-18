@@ -1,0 +1,22 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main()
+{
+    string word;
+    cin >> word;
+    int c = 0;
+    while(word[c] != 0) c++;
+    for(int i = 0; i < c; ++i)
+    {
+        cout << "*";
+    }
+    cout << word;
+    for(int i = 0; i < c; ++i)
+    {
+        cout << "*";
+    }
+    return 0;
+}
