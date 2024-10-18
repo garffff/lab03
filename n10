@@ -1,0 +1,19 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main()
+{
+    string word;
+    getline(cin, word);
+    int c = 0, ac = 0, cp = 0;
+    while(word[c] != 0) ++c;
+    for(int i = 0; i < c; ++i)
+    {
+        if(word[i] == 'a') ++ac;
+        if(word[i] == ' ') ++cp;
+    }
+    cout << "proportion of letters 'a' is equal to " << 100 *((float) ac / (c - cp)) << "%";
+    return 0;
+}
