@@ -1,0 +1,28 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main()
+{
+    string sent;
+    getline(cin, sent);
+    int c = 0;
+    string nw;
+    cin >> nw;
+    while(sent[c] != 0) c++;
+    int i = 0;
+    while(sent[i+3] != 0)
+    {
+        string s{sent[i], sent[i+1], sent[i+2]};
+        string can{'c', 'a', 'n'}, Can{'C', 'a', 'n'};
+        if((s == can or s == Can) and (not isalpha(sent[i+3])))
+        {
+            sent.erase(i, 3);
+            sent.insert(i, nw);
+        }
+        i++;
+    }
+    cout << sent;
+    return 0;
+}
