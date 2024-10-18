@@ -1,0 +1,24 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main()
+{
+    string word;
+    int m, n, c = 0;
+    cin >> word >> m >> n;
+    while(word[c] != 0)
+    {
+        ++c;
+    }
+    if(n - m + 1 > c or m <= 0) cout << "Impossible";
+    else
+    {
+        for(m - 1; m - 1 < n; ++m)
+    {
+        cout << word[m-1];
+    }
+    }
+    return 0;
+}
