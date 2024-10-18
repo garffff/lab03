@@ -1,0 +1,31 @@
+#include <iostream>
+#include <string>
+#include <vector>
+
+using namespace std;
+
+int main()
+{
+    vector<string> g(3);
+    cin >> g[0] >> g[1] >> g[2];
+    vector<int> A(3);
+    A[0] = 0, A[1] = 0, A[2] = 0;
+    for(int i = 0; i < 3; ++i)
+    {
+        int j = 0;
+        while(g[i][j] != 0)
+        {
+            j++;
+        }
+        A[i] = j;
+    }
+    int ma = 0, mi = 0;
+    for(int i = 0; i < 3; ++i)
+    {
+        if(A[i] > A[ma]) ma = i;
+        if(A[i] < A[mi]) mi = i;
+    }
+    cout << "the shortest name is " << g[mi] << endl;
+    cout << "the longest name is " << g[ma] << endl;
+    return 0;
+}
