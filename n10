@@ -12,7 +12,7 @@ int main()
     for(int i = 0; i < c; ++i)
     {
         if(word[i] == 'a') ++ac;
-        if(word[i] == ' ') ++cp;
+        if(isalpha(word[i]) == 0) ++cp;
     }
     cout << "proportion of letters 'a' is equal to " << 100 *((float) ac / (c - cp)) << "%";
     return 0;
