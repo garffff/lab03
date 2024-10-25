@@ -1,0 +1,60 @@
+#include <algorithm>
+#include <iostream>
+#include <random>
+#include <vector>
+
+using namespace std;
+
+vector<int> generate_random_vector(int a, int niz, int verh)
+{
+    vector<int> A(a);
+    for(int i =0; i<a; ++i)
+    {
+        A[i] = rand() % (verh - niz + 1) + niz;
+    }
+    return A;
+}
+
+int main()
+{
+    cout << "Insert vectors length and limiting values (length, min value, max value)" << endl;
+    int l, minim, maxim;
+    cin >> l >> minim >> maxim;
+    vector<int> vec = generate_random_vector(l, minim, maxim);
+    cout << "original vector" << endl;
+    for(int i =0; i<l; ++i)
+    {
+        cout << vec[i] << " ";
+    }
+    cout << endl;
+    cout << "multiplied by 2" << endl;
+    for(int i = 0; i < l; ++i)
+    {
+        vec[i] *= 2;
+        cout << vec[i] << " ";
+    }
+    cout << endl;
+    cout << "Insert a" << endl;
+    int a;
+    cin >> a;
+    cout << "reduced by a" << endl;
+    for(int i = 0; i < l; ++i)
+    {
+        vec[i] -= a;
+        cout << vec[i] << " ";
+    }
+    cout << endl;
+    cout << "divided by the first element" << endl;
+    if(vec[0] == 0) cout << "Impossible, the first element is equal to zero" << endl;
+    else
+    {
+        float d = vec[0];
+        for(int i = 0; i < l; ++i)
+        {
+            vec[i] = vec[i] / d;
+            cout << vec[i] << " ";
+        }
+    }
+    cout << endl;
+    return 0;
+}

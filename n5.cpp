@@ -1,0 +1,18 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main()
+{
+    string g;
+    cin >> g;
+    int i = 0;
+    while(g[i] != 0)
+    {
+        ++i;
+    }
+    if(i % 2 == 0) cout << "number of symbols is even";
+    else cout << "number of symbols is odd";
+    return 0;
+}
